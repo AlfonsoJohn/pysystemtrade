@@ -5,7 +5,6 @@ import numpy
 import pandas
 import pandas as pd
 import datetime
-import random
 
 import numpy as np
 from copy import copy
@@ -21,6 +20,7 @@ from syscore.dateutils import (
     MONTHS_IN_YEAR,
 )
 from syscore.objects import arg_not_supplied
+import secrets
 
 DEFAULT_DATE_FORMAT = "%Y-%m-%d %H:%M:%S"
 
@@ -218,7 +218,7 @@ def must_have_item(slice_data):
 def get_bootstrap_series(data: pd.DataFrame):
     length_of_series = len(data.index)
     random_indices = [
-        int(random.uniform(0, length_of_series)) for _unused in range(length_of_series)
+        int(secrets.SystemRandom().uniform(0, length_of_series)) for _unused in range(length_of_series)
     ]
     bootstrap_data = data.iloc[random_indices]
 
