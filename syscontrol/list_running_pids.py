@@ -67,8 +67,7 @@ def remote_list_of_running_pids(trading_server_login_data):
         ),
         stdin=None,
         stderr=subprocess.STDOUT,
-        shell=True,
-    )
+        shell=False)
 
     pid_list = convert_raw_binary_text_output_into_list_of_pid_ints(raw_text)
 
