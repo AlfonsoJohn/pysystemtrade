@@ -15,6 +15,7 @@ There are 3 kinds of things in a cache with different levels of persistence:
 from syscore.fileutils import get_filename_for_package
 import pickle
 from functools import wraps
+import fickling
 
 """
 This is used for items which affect an entire system, not just one instrument
@@ -249,7 +250,7 @@ class systemCache(dict):
         filename = get_filename_for_package(relativefilename)
 
         with open(filename, "rb") as fhandle:
-            cache_from_pickled = pickle.load(fhandle)
+            cache_from_pickled = fickling.load(fhandle)
 
         if clearcache:
             self.clear()
